@@ -1,5 +1,12 @@
 # Gemini RAG Explorer
 
+![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
+![Streamlit](https://img.shields.io/badge/streamlit-1.28+-red.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)
+![Linting](https://img.shields.io/badge/linting-ruff-yellow.svg)
+![Gemini API](https://img.shields.io/badge/Gemini-API-orange.svg)
+
 A production-ready Streamlit application for exploring Google's Gemini File Search RAG (Retrieval Augmented Generation) capabilities. Built with type safety, comprehensive error handling, and developer-friendly architecture.
 
 ## Screenshots
