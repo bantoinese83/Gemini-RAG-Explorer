@@ -2,6 +2,17 @@
 
 A production-ready Streamlit application for exploring Google's Gemini File Search RAG (Retrieval Augmented Generation) capabilities. Built with type safety, comprehensive error handling, and developer-friendly architecture.
 
+## Screenshots
+
+### Main Interface
+![Main Interface](docs/screenshot-main.png)
+
+### Upload & Index Documents
+![Upload Interface](docs/screenshot-upload.png)
+
+### Query Your Documents
+![Query Interface](docs/screenshot-query.png)
+
 ## Architecture
 
 ### Core Components
