@@ -6,9 +6,17 @@ __pycache__/
 .Python
 env/
 .env
+.env.local
+.env.*.local
 *.log
 .DS_Store
 *.swp
 *.swo
 *~
+
+# Security: Never commit API keys or secrets
+**/secrets/
+**/*secret*
+**/*key*
+!*.example
 
