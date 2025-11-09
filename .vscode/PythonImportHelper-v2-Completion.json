@@ -1,0 +1,232 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "genai",
+        "importPath": "google",
+        "description": "google",
+        "isExtraImport": true,
+        "detail": "google",
+        "documentation": {}
+    },
+    {
+        "label": "types",
+        "importPath": "google.genai",
+        "description": "google.genai",
+        "isExtraImport": true,
+        "detail": "google.genai",
+        "documentation": {}
+    },
+    {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
+        "label": "traceback",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "traceback",
+        "description": "traceback",
+        "detail": "traceback",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "get_api_key",
+        "importPath": "src.config",
+        "description": "src.config",
+        "isExtraImport": true,
+        "detail": "src.config",
+        "documentation": {}
+    },
+    {
+        "label": "GeminiRAGService",
+        "importPath": "src.rag_service",
+        "description": "src.rag_service",
+        "isExtraImport": true,
+        "detail": "src.rag_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_api_key",
+        "kind": 2,
+        "importPath": "src.config",
+        "description": "src.config",
+        "peekOfCode": "def get_api_key() -> str:\n    \"\"\"Get Gemini API key from environment.\"\"\"\n    api_key = os.getenv(\"GEMINI_API_KEY\")\n    if not api_key:\n        raise ValueError(\n            \"GEMINI_API_KEY not found. Please set it in your .env file or environment.\"\n        )\n    return api_key",
+        "detail": "src.config",
+        "documentation": {}
+    },
+    {
+        "label": "GeminiRAGService",
+        "kind": 6,
+        "importPath": "src.rag_service",
+        "description": "src.rag_service",
+        "peekOfCode": "class GeminiRAGService:\n    \"\"\"Service for interacting with Gemini File Search RAG API.\"\"\"\n    def __init__(self, api_key: str):\n        if not api_key or not api_key.strip():\n            raise ValueError(\"API key cannot be empty\")\n        try:\n            self.client = genai.Client(api_key=api_key)\n            self.current_store: Optional[str] = None\n        except Exception as e:  # pylint: disable=broad-exception-caught\n            raise ValueError(f\"Failed to initialize Gemini client: {str(e)}\") from e",
+        "detail": "src.rag_service",
+        "documentation": {}
+    },
+    {
+        "label": "retry_on_failure",
+        "kind": 2,
+        "importPath": "src.rag_service",
+        "description": "src.rag_service",
+        "peekOfCode": "def retry_on_failure(max_retries: int = 3, delay: float = 1.0, backoff: float = 2.0):\n    \"\"\"Decorator for retrying API calls with exponential backoff.\"\"\"\n    def decorator(func: Callable):\n        @wraps(func)\n        def wrapper(*args, **kwargs):\n            last_exception = None\n            current_delay = delay\n            for attempt in range(max_retries):\n                try:\n                    return func(*args, **kwargs)",
+        "detail": "src.rag_service",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "src.rag_service",
+        "description": "src.rag_service",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n# Max file size: 100 MB\nMAX_FILE_SIZE = 100 * 1024 * 1024\ndef retry_on_failure(max_retries: int = 3, delay: float = 1.0, backoff: float = 2.0):\n    \"\"\"Decorator for retrying API calls with exponential backoff.\"\"\"\n    def decorator(func: Callable):\n        @wraps(func)\n        def wrapper(*args, **kwargs):\n            last_exception = None\n            current_delay = delay",
+        "detail": "src.rag_service",
+        "documentation": {}
+    },
+    {
+        "label": "MAX_FILE_SIZE",
+        "kind": 5,
+        "importPath": "src.rag_service",
+        "description": "src.rag_service",
+        "peekOfCode": "MAX_FILE_SIZE = 100 * 1024 * 1024\ndef retry_on_failure(max_retries: int = 3, delay: float = 1.0, backoff: float = 2.0):\n    \"\"\"Decorator for retrying API calls with exponential backoff.\"\"\"\n    def decorator(func: Callable):\n        @wraps(func)\n        def wrapper(*args, **kwargs):\n            last_exception = None\n            current_delay = delay\n            for attempt in range(max_retries):\n                try:",
+        "detail": "src.rag_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_rag_service",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_rag_service():\n    \"\"\"Initialize and cache the RAG service.\"\"\"\n    try:\n        api_key = get_api_key()\n        service = GeminiRAGService(api_key)\n        return service\n    except ValueError as e:\n        st.error(f\"❌ Configuration Error: {str(e)}\")\n        st.info(\"💡 Make sure you've created a `.env` file with your `GEMINI_API_KEY`\")\n        st.stop()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "format_file_size",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def format_file_size(size_bytes: int) -> str:\n    \"\"\"Format file size in human-readable format.\n    Args:\n        size_bytes: File size in bytes\n    Returns:\n        Formatted string with appropriate unit (B, KB, MB, GB, TB)\n    \"\"\"\n    for unit in [\"B\", \"KB\", \"MB\", \"GB\"]:\n        if size_bytes < 1024.0:\n            return f\"{size_bytes:.2f} {unit}\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def main():\n    \"\"\"Main application entry point.\n    Sets up the Streamlit UI and handles user interactions for\n    file upload, store management, and document querying.\n    \"\"\"\n    st.title(\"🔍 Gemini RAG Explorer\")\n    st.markdown(\n        \"Upload documents and query them using Gemini's File Search RAG capabilities\"\n    )\n    rag_service = get_rag_service()",
+        "detail": "app",
+        "documentation": {}
+    }
+]
